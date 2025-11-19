@@ -22,11 +22,6 @@ export class TarifarioService {
       throw new NotFoundException(`Tipo de habitación con ID ${createTarifarioDto.tipo_habitacion_id} no encontrado`);
     }
 
-    console.log('🔍 Tipo de habitación encontrado:', {
-      id: tipoHabitacion.tipoHabitacionId,
-      nombre: tipoHabitacion.nombre
-    });
-
     // 2. Calcular el precio_venta si no se proporciona
     const precioVenta = createTarifarioDto.precio_venta ||
       (createTarifarioDto.costo_base + createTarifarioDto.utilidad);
@@ -36,12 +31,6 @@ export class TarifarioService {
       ...createTarifarioDto,
       precio_venta: precioVenta,
       tipo_habitacion_id: tipoHabitacion.tipoHabitacionId  // Asignar directamente el ID
-    });
-
-    console.log('📝 Datos para crear tarifario:', {
-      ...createTarifarioDto,
-      precio_venta: precioVenta,
-      tipo_habitacion_id: tipoHabitacion.tipoHabitacionId
     });
 
     // 4. Guardar el tarifario
@@ -56,13 +45,6 @@ export class TarifarioService {
     if (!tarifarioConRelacion) {
       throw new Error('Error al recuperar el tarifario recién creado');
     }
-
-    console.log('✅ Tarifario creado exitosamente:', {
-      id: tarifarioConRelacion.idTarifario,
-      tipo_habitacion_id: tarifarioConRelacion.tipo_habitacion_id,
-      tipoHabitacion: tarifarioConRelacion.tipoHabitacion?.nombre,
-      precio_venta: tarifarioConRelacion.precio_venta
-    });
 
     return tarifarioConRelacion;
   }
