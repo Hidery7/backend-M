@@ -8,6 +8,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { TarifarioModule } from './tarifario/tarifario.module';
 import { HabitacionModule } from './habitacion/habitacion.module';
 import { ReservaModule } from './reserva/reserva.module';
+import { PagosModule } from './pagos/pagos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TipoHabitacionModule } from './tipo_habitacion/tipo_habitacion.module';
 
@@ -31,6 +32,7 @@ import { TipoHabitacionModule } from './tipo_habitacion/tipo_habitacion.module';
     TarifarioModule, 
     HabitacionModule, 
     ReservaModule,
+    PagosModule,
     TipoHabitacionModule,  // Asegúrate de que esté en la lista
   ],
 
